@@ -8,6 +8,9 @@
 var fs = require('fs');
 var express = require('express');
 var app = express();
+const bodyParser = require('body-parser');
+
+const apiRouter = require('./api');
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
@@ -21,6 +24,8 @@ if (!process.env.DISABLE_XORIGIN) {
     next();
   });
 }
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
@@ -37,6 +42,8 @@ app.route('/')
     .get(function(req, res) {
 		  res.sendFile(process.cwd() + '/views/index.html');
     })
+
+app.use('/api', apiRouter);
 
 // Respond not found to all the wrong routes
 app.use(function(req, res, next){

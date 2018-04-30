@@ -10,9 +10,23 @@
 
    <body>
       <div class="container">
-         <h1>Manage Node.js projects and npm packages using package.json</h1>
-         <h3>Part 1 of Free Code Camp Backend Challenges</h3>
+        <h1>Freecodecamp - File Metadata Microservice</h1>
+        
+        <form action="/api/file-metadata" method="post" enctype="multipart/form-data" >
+          <div>
+            <label for="name">name</label> 
+        
+            <input type="text" id="name" name="name" />
+          </div>
+          
+          <br />
+          
+          <input type="file" name="upload" /> 
+          
+          <button type="submit">
+            submit
+          </button> 
+        </form>
       </div>
    </body>
-
 </html>
